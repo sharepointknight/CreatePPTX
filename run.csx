@@ -1,5 +1,5 @@
-#r ".\bin\DocumentFormat.OpenXml.dll"
-#r ".\bin\OpenXML.dll"
+#r "DocumentFormat.OpenXml"
+#r "OpenXML"
 
 using System.Net;
 using OpenXML;
