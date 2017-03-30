@@ -9,7 +9,13 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 {
     log.Info("C# HTTP trigger function processed a request.");
 
-    byte[] file = OpenXML.GeneratePPTX.generatePPTX("D:\\home\\site\\wwwroot\\HttpTriggerCSharp1\\Proposal.pptx");
+    string json = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "json", true) == 0)
+        .Value;
+    log.Info("JSON: " + json);
+    string root = "D:\\home\\site\\wwwroot\\HttpTriggerCSharp1";
+
+    byte[] file = OpenXML.GeneratePPTX.generatePPTX("D:\\home\\site\\wwwroot\\HttpTriggerCSharp1\\Proposal.pptx", json, root);
     
     var result = new HttpResponseMessage(HttpStatusCode.OK);
     result.Content = new ByteArrayContent(file);
