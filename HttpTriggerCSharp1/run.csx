@@ -3,6 +3,7 @@
 
 using System.Net;
 using OpenXML;
+using System.Net.Http.Headers;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
