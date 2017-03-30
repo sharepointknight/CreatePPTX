@@ -11,7 +11,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     byte[] file = OpenXML.GeneratePPTX.generatePPTX("D:\\home\\site\\wwwroot\\HttpTriggerCSharp1\\Proposal.pptx");
     
     var result = new HttpResponseMessage(HttpStatusCode.OK);
-    result.Content = new ByteArrayContent(System.Text.Encoding.UTF8.GetBytes(html));
+    result.Content = file;
     result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") 
         { FileName = "file.pptx" };
     result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.presentationml.presentation");
