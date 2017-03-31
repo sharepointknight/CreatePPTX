@@ -12,6 +12,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     string json = req.GetQueryNameValuePairs()
         .FirstOrDefault(q => string.Compare(q.Key, "json", true) == 0)
         .Value;
+    dynamic data = await req.Content.ReadAsAsync<object>();
+    json = json ?? data?.json;
     log.Info("JSON: " + json + "-");
     string root = "D:\\home\\site\\wwwroot\\HttpTriggerCSharp1";
 
