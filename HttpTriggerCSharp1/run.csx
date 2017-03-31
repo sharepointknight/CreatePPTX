@@ -12,7 +12,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     string json = req.GetQueryNameValuePairs()
         .FirstOrDefault(q => string.Compare(q.Key, "json", true) == 0)
         .Value;
-    log.Info("JSON: " + req.Content.ToString());
+    log.Info("JSON: " + json + "-");
     string root = "D:\\home\\site\\wwwroot\\HttpTriggerCSharp1";
 
     byte[] file = OpenXML.GeneratePPTX.generatePPTX("D:\\home\\site\\wwwroot\\HttpTriggerCSharp1\\Proposal.pptx", json, root);
